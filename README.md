@@ -1,7 +1,7 @@
-Div Ready
+Div Framework
 ===================
 
-This is a child theme of the **[Div Framework](https://github.com/DivTruth/div-ready)**. It is still just an infant and not quite matured but the **[Div Blend](https://divblend.com)** solutions coming soon shall be very promising. Stay tuned for more details
+A solid, bones-like, SASS framework with an emphasis on a mobile first approach. One of the few frameworks that aims to maintain the WordPress philosophy that themes are responsible for appearance while plugins maintain the functionality. For this reason Div Starter is a plugin that was developed to help maintain this integrity throughout the development process without sacrificing freedom of creative solution for developers
 
 ----------
 
