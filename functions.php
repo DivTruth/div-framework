@@ -26,7 +26,7 @@ define( 'DIV_JS_URL', 			DIV_INC_URL.'js/' );
 define( 'THEME_NAME', 			wp_get_theme() );
 define( 'THEME_APPEARANCE_DIR', get_stylesheet_directory().'/appearance/' );
 define( 'THEME_APPEARANCE_URL', get_stylesheet_directory_uri().'/appearance/' );
-define( 'THEME_INC_DIR', 		TEMPLATEPATH.'/inc/' );
+define( 'THEME_INC_DIR', 		get_stylesheet_directory().'/inc/' );
 define( 'THEME_INC_URL', 		get_template_directory_uri().'/inc/' );
 define( 'THEME_IMAGES_DIR', 	THEME_APPEARANCE_DIR.'images/' );
 define( 'THEME_IMAGES_URL', 	THEME_APPEARANCE_URL.'images/' );
@@ -52,11 +52,21 @@ $theme_data = wp_get_theme();
 define('THEME_VERSION', $theme_data['Version']);
 
 /**
- * Includes
+ * Framework Includes
  * Div Engine: This is the control panel for all Div Framework functionality
  * Admin: This file handles the admin area and functions. 
+ * Options: Addes ACF theme option pages and menus
  *
  * @since   1.0
  */
 require_once(DIV_INC_DIR.'/div.php');
 require_once(DIV_INC_DIR.'/admin.php');
+
+/**
+ * Theme Includes
+ * This is the control panel for all child theme functionality
+ *
+ * @since   1.0
+ */
+if( file_exists(THEME_INC_DIR.'sidebars.php') )
+	require_once(THEME_INC_DIR.'sidebars.php');

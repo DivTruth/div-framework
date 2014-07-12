@@ -37,6 +37,7 @@ function div_custom_admin_footer() {
 # TODO: Need to make these theme support options available on a developers options page
 
 add_theme_support( 'post-formats', apply_filters( 'div_post_formats', array( 'gallery', 'image' ) ) );
+add_theme_support( 'widgets' );
 add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' ); 
 add_theme_support( 'html5' ); 

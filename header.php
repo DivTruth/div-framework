@@ -36,16 +36,23 @@
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
-		
 	</head>
 	
 	<body <?php body_class(); ?> style="opacity:0;filter: alpha(opacity=0); display:none;">
 
-		<header>
+		<div id="container">
+			<header class="header">
 
-			<?php get_template_part('templates/header','mobile-menu') ?>
+				<?php get_template_part('templates/header','mobile-menu') ?>
 
-			<?php 
-			# Main Navigation 
-			div_main_nav(); ?>
-		</header>
+				<div id="inner-header" class="wrap clearfix">
+					
+					<?php get_template_part('templates/header','titlespace') ?>
+					
+					<nav id="full" class="full" role="navigation">
+						<?php div_main_nav(); ?>
+					</nav>
+
+				</div> <!-- end #inner-header -->
+			
+			</header> <!-- end header -->

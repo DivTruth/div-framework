@@ -5,7 +5,7 @@
  *
 */
 ?>
-<div id="sidebars" class="sidebar fourcol last clearfix">
+<div id="sidebars" class="sidebar clearfix">
   <div id="sidebar1" class="sidebar" role="complementary">
 
     <?php if ( is_active_sidebar( 'primary' ) ) : ?>

@@ -239,6 +239,7 @@ if ( ! function_exists( 'div_copyright' ) ) {
    */
 
   function div_copyright(){
+    echo "test";
     if( div_get_field('site_copyright') != "" || !div_get_field('site_copyright') ) :
       echo div_get_field('site_copyright');
     else : 
