@@ -66,6 +66,20 @@ function div_scripts_and_styles() {
 }
 
 /**
+ * Div Build Action
+ * A quick solution for building or rebuilding action
+ * 
+ * @since 1.0
+ */
+function div_build_action( $tag, $hooks=array() ){
+  remove_all_actions( $tag );
+  global $wp_filter;
+  foreach ($hooks as $hook => $priority) {
+    add_action( $tag, $hook, $priority );
+  }
+}
+
+/**
  * Div Get Field w/ ACF
  * All Div Framework options are registered with ACF (a required plugin),
  * this funtion is used for getting fields in case ACF isn't loaded.
