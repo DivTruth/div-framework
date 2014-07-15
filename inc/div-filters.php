@@ -38,7 +38,7 @@ if ( ! function_exists( 'div_charset' ) ) {
    * @return void
    */
   function div_charset(){
-    echo apply_filters( 'div_charset', '<meta charset="utf-8">' );
+    echo apply_filters( 'div_charset', '<meta charset="'.get_bloginfo( 'charset' ).'">' );
   }
 
 }
@@ -160,7 +160,73 @@ if ( ! function_exists( 'div_begin_content_container' ) ) {
       echo apply_filters( 'div_begin_main_container', $html );
     }
 
+  }   
+
+  if ( ! function_exists( 'div_title_output' ) ) {
+
+    /**
+     * Output Post title
+     *
+     * @access public
+     * @subpackage  Framework/Post
+     * @return void
+     */
+    function div_title_output(){
+      $html = '<h1>'. get_the_title(). '</h1>';
+      echo apply_filters( 'div_title_output', $html );
+    }
+
   } 
+
+  if ( ! function_exists( 'div_get_post_info' ) ) {
+
+    /**
+     * Output Post meta details
+     *
+     * @access public
+     * @subpackage  Framework/Post
+     * @return void
+     */
+    function div_get_post_info($post_specified=""){
+      if(!empty($post_specified)) {
+        setup_postdata($post_specified);
+      }
+
+      //instead of rebuilding html function, using output buffer to get html into string
+      ob_start();
+      comments_number( '0 Comments', '1 Comment', '% Comments' );
+      $get_comments_number_html = ob_get_clean();
+
+      //setup the post info html string
+      $post_info = '
+        <ul class="post-info">
+          <li class="post-date">'.get_the_time('F jS Y').'</li>
+          <li class="post-author">'.get_the_author().'</li>
+          <li class="post-comment-count">
+            <a href="'.get_comments_link().'" title="Comment on '.get_the_title().'">'.$get_comments_number_html.'</a>
+          </li>
+        </ul>';
+      wp_reset_postdata();
+      return apply_filters( 'div_get_post_info', $post_info );
+    }
+
+  } 
+
+    if ( ! function_exists( 'div_post_info' ) ) {
+
+      /**
+       * Output Post meta details
+       *
+       * @access public
+       * @subpackage  Framework/Post
+       * @see div_get_post_info()
+       * @return void
+       */
+      function div_post_info($post_specified=""){
+        echo div_get_post_info($post_specified);
+      }
+
+    } 
 
   if ( ! function_exists( 'div_end_main_container' ) ) {
 
@@ -193,6 +259,23 @@ if ( ! function_exists( 'div_end_content_container' ) ) {
   }
 
 }
+
+if ( ! function_exists( 'div_clear' ) ) {
+
+  /**
+   * Output Content Tags
+   * @access public
+   * @subpackage  Framework/Body
+   * @return void
+   */
+  function div_clear(){
+    $html = '<div class="clearfix"></div>';
+    echo apply_filters( 'div_clear', $html );
+  }
+
+}
+
+
 /*===================// LOOP //=====================*/
 
 if ( ! function_exists( 'div_404_message' ) ) {
@@ -239,14 +322,13 @@ if ( ! function_exists( 'div_copyright' ) ) {
    */
 
   function div_copyright(){
-    echo "test";
-    if( div_get_field('site_copyright') != "" || !div_get_field('site_copyright') ) :
-      echo div_get_field('site_copyright');
-    else : 
+    // if( div_get_field('site_copyright') != "" || !div_get_field('site_copyright') ) :
+    //   echo div_get_field('site_copyright');
+    // else : 
       $copyright = '&copy; '.date('Y').' '.get_bloginfo('name').' All Rights Reserved. <br>';
       $copyright .= 'Site powered by <a href="http://www.divblend.com" target="_blank">Div Framework</a>.</p>';
-      echo $copyright;
-    endif;  
+      echo apply_filters( 'div_copyright', $copyright );
+    // endif;  
   }
 }
 

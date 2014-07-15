@@ -13,6 +13,59 @@ $alert-red:      #fbe3e4;
 $alert-green:    #e6efc2;
 $alert-blue:     #d5edf8;
 
+/* Base Colors */
+$white:   #fff;
+$black:   #000;
+$grey:    #808080;
+$bgr:     #fff; /* Background */
+
+/* Theme Colors */
+$primary: #1f282f;
+  $primary-dk: #12181e;
+  $primary-md: darken($primary,1%);
+  $primary-lt: lighten($primary,10%);
+$secondary: #96bfb0;
+  $secondary-dk: darken($secondary,10%);
+  $secondary-md: darken($secondary,1%);
+  $secondary-lt: lighten($secondary,10%);
+$accent: #ffc224;
+  $accent-dk: darken($accent,10%);
+  $accent-lt: lighten($accent,10%);
+$link-color: $primary;
+  $link-color-dk: darken($link-color,10%);
+  $link-color-lt: lighten($link-color,10%);
+  $link-hover: $link-color-lt;
+
+$nav-bgr: $primary;
+$nav-hover-bgr: $primary-lt;
+$nav-current-bgr: $primary-dk;
+
+/*********************
+TYPOGRAPHY
+*********************/
+$sans-serif:        Helvetica, Arial, sans-serif;
+$serif:           'Times New Roman', Georgia, serif;
+
+/*********************
+ * THEME SPRITE
+ * @include sprite(0,0);
+ *********************/
+@mixin sprite($posX, $posY){
+  background: url(../images/sprite.png) $posX $posY no-repeat transparent;
+  background-size: 1600px;
+}
+@mixin sprite_x2($posX, $posY){
+  background: url(../images/sprite.png) $posX $posY no-repeat transparent;
+  /* WARNING: IF sprite image is made for retina */
+  /* This should be half the size of the sprite.png's original size */
+  background-size: 800px;
+}
+
+@mixin mobile-sprite($posX, $posY){
+  background: url(../images/mobile-sprite.png) $posX $posY no-repeat transparent;
+  background-size: 227px; 
+}
+
 /*********************
  * RESPONSIVE IMAGES
  * @include responsive();

@@ -7,9 +7,6 @@
  * @license GPL
  */
 
-include( dirname(__FILE__) .'/div-filters.php');  #Include Div Filters
-include( dirname(__FILE__) .'/div-hooks.php');    #Include Div Hooks
-
 /**
  * Initialize Div
  * Start the div engine
@@ -18,8 +15,8 @@ include( dirname(__FILE__) .'/div-hooks.php');    #Include Div Hooks
  */
 add_action('after_setup_theme','initialize_div', 16);
 function initialize_div() {
-    # enqueue base scripts and styles
-    add_action('wp_enqueue_scripts', 'div_scripts_and_styles', 999);
+  # enqueue base scripts and styles
+  add_action('wp_enqueue_scripts', 'div_scripts_and_styles', 999);
 }
 
 /**
@@ -62,20 +59,6 @@ function div_scripts_and_styles() {
     }
     add_action( 'wp_footer', 'theme_styles');
     
-  }
-}
-
-/**
- * Div Build Action
- * A quick solution for building or rebuilding action
- * 
- * @since 1.0
- */
-function div_build_action( $tag, $hooks=array() ){
-  remove_all_actions( $tag );
-  global $wp_filter;
-  foreach ($hooks as $hook => $priority) {
-    add_action( $tag, $hook, $priority );
   }
 }
 

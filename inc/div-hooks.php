@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
    * @see div_pingback() - 35
    * @see div_html5_shiv() - 40
    */
-  div_build_action( 'div_head' , array(
+  DF::add_action( 'div_head' , array(
     'div_page_title' => 10,
     'div_charset' => 15,
     'div_google_frame' => 20,
@@ -42,22 +42,40 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
    * @see div_begin_content_container() - 10
    * @see div_begin_main_container() - 15
    */
-  div_build_action( 'div_begin_content' , array(
+  DF::add_action( 'div_begin_content' , array(
     'div_begin_content_container' => 10,
     'div_begin_main_container' => 15,
     )
   );
 
   /**
+   * Post Content
+   *
+   * @see div_title_output() - 10
+   * @see div_post_info() - 15
+   * @see the_content() - 20
+   * @see div_clear() - 25
+   */
+  DF::add_action( 'div_post_content' , array(
+    'div_title_output' => 10,
+    'the_content' => 20,
+    'div_clear' => 25,
+    )
+  );
+  if( is_single() )
+    DF::add_action( 'div_post_content', 'div_post_info', 15 );
+
+  /**
    * End Content Container
    *
-   * @see div_end_main_container() - 5
-   * @see div_load_sidebar() - 10
-   * @see div_end_content_container() - 15
+   * @see div_end_main_container() - 10
+   * @see get_sidebar() - 15
+   * @see div_end_content_container() - 20
    */
-  div_build_action( 'div_end_content' , array(
+  DF::add_action( 'div_end_content' , array(
     'div_end_main_container' => 10,
     'get_sidebar' => 15,
+    'div_end_content_container' => 20
     )
   );
 
@@ -68,7 +86,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
    *
    * @see div_404_message() - 10
    */
-  div_build_action( 'div_post_not_found' , array(
+  DF::add_action( 'div_post_not_found' , array(
     'div_404_message' => 10,
     )
   );
@@ -80,7 +98,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @see div_begin_footer_container() - 10
  */
-div_build_action( 'div_begin_footer' , array(
+DF::add_action( 'div_begin_footer' , array(
   'div_begin_footer_container' => 10,
   )
 );
@@ -91,7 +109,7 @@ div_build_action( 'div_begin_footer' , array(
  * @see div_copyright() - 10
  * @see div_end_footer_container() - 15
  */
-div_build_action( 'div_end_footer' , array(
+DF::add_action( 'div_end_footer' , array(
   'div_copyright' => 10,
   'div_end_footer_container' => 15,
   )

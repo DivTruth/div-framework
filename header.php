@@ -5,10 +5,9 @@
  *
  * BEFORE YOU CHANGE ANYTHING:
  * Please note that you shouldn't need to change anything in this file. To control how the page is built, 
- * please consider using actions like add_action('build_theme_head', 'new_function_name') to control 
- * elements loaded on the page. Alternatively you can also edit files like part.head-meta.inc.php or 
- * better yet, create that file in yoru child theme to overwrite it completely.
-*/
+ * please consider using actions like add_action('div_head', 'new_function_name') to control 
+ * elements loaded on the page. 
+ */
 ?>
 
 <!doctype html>  
@@ -38,6 +37,11 @@
 		<!-- end of wordpress head -->
 	</head>
 	
+	<?php 
+	/**
+	 * The body is hidden until the CSS is loaded so that nothing appears until it is styled,
+	 * therefore the CSS must reset this to be displayed.
+	 */ ?>
 	<body <?php body_class(); ?> style="opacity:0;filter: alpha(opacity=0); display:none;">
 
 		<div id="container">

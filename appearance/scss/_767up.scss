@@ -1,0 +1,102 @@
+/******************************************************************
+Site Name: Div Framework
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+    ** imports _768up-nav.scss
+******************************************************************/
+
+/*********************
+GENERAL STYLES
+*********************/
+body {}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+.full{display: block;}
+.mobile{display:none;}
+.wrap {
+	max-width: 1020px;
+}
+
+/*********************
+HEADER SYTLES
+*********************/
+.header {
+
+}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+@import '767up-nav';
+
+
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+#content {
+	@extend .twelvecol;
+	@extend .first;
+	#inner-content {
+		#main {
+			@extend .eightcol;
+			@extend .first;
+		}
+	}
+}
+
+/********************
+ARTICLE STYLES
+*********************/
+
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+#sidebars{
+	@extend .fourcol;
+	@extend .last;
+}
+.sidebar {
+	
+	.widgettitle {
+		
+	}
+
+	.widget {
+		
+		ul {
+			li {
+				
+				&:first-child {}
+				&:last-child {}
+				a {}
+				/* deep nesting */
+
+				ul {
+					
+				}
+			}
+		}
+	}
+}
+
+/*********************
+FOOTER STYLES
+*********************/
+.footer {
+	@extend .twelvecol;
+	@extend .first;
+	
+	#inner-footer {
+		ul {
+			li {
+				a {
+					&:hover {}
+				}
+				ul {}
+			}
+		}	
+	}
+} /* end .footer */
