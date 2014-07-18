@@ -45,10 +45,14 @@ if ( ! class_exists('DF') ) {
 
         function __construct() {
             # Define constants
-            add_action('after_setup_theme', array( $this, 'define_constants'), 1);
+            $this->define_constants();
 
-            # Start the DF engine
-            add_action('after_setup_theme', array( $this, 'df_engine'), 2);
+            # If child theme active, then start the DF engine, else load splash page
+            if( DIV_NAME != "Div Framework")
+                $this->df_engine();
+            else
+                add_action( 'template_redirect', array( $this,'df_fallback') );
+
         }
 
         /**
@@ -95,7 +99,7 @@ if ( ! class_exists('DF') ) {
             /**
              * Parent theme path constants
              */
-            define( 'DIV_NAME',             wp_get_theme('Div Framework') );
+            define( 'DIV_NAME',             wp_get_theme() );
             define( 'DIV_APPEARANCE_DIR',   TEMPLATEPATH.'/appearance/' );
             define( 'DIV_APPEARANCE_URL',   get_template_directory_uri().'/appearance/' );
             define( 'DIV_INC_DIR',          TEMPLATEPATH.'/inc/' );
@@ -123,14 +127,12 @@ if ( ! class_exists('DF') ) {
         /**
          * DF Engine
          *
-         * @param string $tag
-         * @param array $hooks
          * @return void
          *
          * @since 1.0
          *
          */
-        function df_engine( $tag, $hooks=array() ){
+        function df_engine(){
             require_once( DIV_INC_DIR.'/div.php' );
             require_once( DIV_INC_DIR.'/admin.php' );
             require_once( DIV_INC_DIR.'/div-filters.php' );  #Include Div Framework Filters
@@ -138,6 +140,19 @@ if ( ! class_exists('DF') ) {
 
             if( file_exists(THEME_INC_DIR.'sidebars.php') )
                 require_once(THEME_INC_DIR.'sidebars.php');
+        }
+
+        /**
+         * DF Fallback
+         *
+         * @return void
+         *
+         * @since 1.0
+         *
+         */
+        function df_fallback(){
+            include( get_template_directory() . '/fallback.php' );
+            exit;
         }
 
         /**
