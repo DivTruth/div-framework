@@ -178,7 +178,7 @@ if ( ! function_exists( 'div_begin_content_container' ) ) {
 
   } 
 
-  if ( ! function_exists( 'div_get_post_info' ) ) {
+  if ( ! function_exists( 'div_post_info' ) ) {
 
     /**
      * Output Post meta details
@@ -187,46 +187,26 @@ if ( ! function_exists( 'div_begin_content_container' ) ) {
      * @subpackage  Framework/Post
      * @return void
      */
-    function div_get_post_info($post_specified=""){
-      if(!empty($post_specified)) {
-        setup_postdata($post_specified);
-      }
-
-      //instead of rebuilding html function, using output buffer to get html into string
-      ob_start();
-      comments_number( '0 Comments', '1 Comment', '% Comments' );
-      $get_comments_number_html = ob_get_clean();
-
-      //setup the post info html string
-      $post_info = '
-        <ul class="post-info">
-          <li class="post-date">'.get_the_time('F jS Y').'</li>
-          <li class="post-author">'.get_the_author().'</li>
-          <li class="post-comment-count">
-            <a href="'.get_comments_link().'" title="Comment on '.get_the_title().'">'.$get_comments_number_html.'</a>
-          </li>
-        </ul>';
-      wp_reset_postdata();
-      return apply_filters( 'div_get_post_info', $post_info );
+    function div_post_info(){
+      return get_template_part( 'parts/post/loop', 'post-info' );
     }
 
   } 
 
-    if ( ! function_exists( 'div_post_info' ) ) {
+  if ( ! function_exists( 'div_post_meta' ) ) {
 
-      /**
-       * Output Post meta details
-       *
-       * @access public
-       * @subpackage  Framework/Post
-       * @see div_get_post_info()
-       * @return void
-       */
-      function div_post_info($post_specified=""){
-        echo div_get_post_info($post_specified);
-      }
+    /**
+     * Output Post meta details
+     *
+     * @access public
+     * @subpackage  Framework/Post
+     * @return void
+     */
+    function div_post_meta(){
+      return get_template_part( 'parts/post/loop', 'post-meta' );
+    }
 
-    } 
+  } 
 
   if ( ! function_exists( 'div_end_main_container' ) ) {
 
@@ -315,6 +295,7 @@ if ( ! function_exists( 'div_begin_footer_container' ) ) {
 }
 
 if ( ! function_exists( 'div_copyright' ) ) {
+
   /**
    * Site Copyright
    * 
@@ -330,6 +311,7 @@ if ( ! function_exists( 'div_copyright' ) ) {
       echo apply_filters( 'div_copyright', $copyright );
     // endif;  
   }
+
 }
 
 if ( ! function_exists( 'div_end_footer_container' ) ) {

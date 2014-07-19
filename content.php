@@ -14,7 +14,8 @@
 	 * @hooked div_title_output - 10
 	 * @hooked div_post_info - 15 (if single)
 	 * @hooked the_content - 20
-	 * @hooked div_clear - 25
+	 * @hooked div_post_meta - 25
+	 * @hooked div_clear - 30
 	 */
 	do_action('div_post_content'); ?>
 

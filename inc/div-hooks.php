@@ -54,12 +54,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
    * @see div_title_output() - 10
    * @see div_post_info() - 15
    * @see the_content() - 20
-   * @see div_clear() - 25
+   * @see div_post_meta() - 25
+   * @see div_clear() - 30
    */
   DF::add_action( 'div_post_content' , array(
     'div_title_output' => 10,
     'the_content' => 20,
-    'div_clear' => 25,
+    'div_post_meta' => 25,
+    'div_clear' => 30,
     )
   );
   if( is_single() )

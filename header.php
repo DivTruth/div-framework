@@ -47,11 +47,11 @@
 		<div id="container">
 			<header class="header">
 
-				<?php get_template_part('templates/header','mobile-menu') ?>
+				<?php get_template_part('parts/header/part','mobile-menu'); ?>
 
 				<div id="inner-header" class="wrap clearfix">
 					
-					<?php get_template_part('templates/header','titlespace') ?>
+					<?php get_template_part('parts/header/part','titlespace'); ?>
 					
 					<nav id="full" class="full" role="navigation">
 						<?php div_main_nav(); ?>
