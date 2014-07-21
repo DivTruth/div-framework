@@ -1,21 +1,23 @@
 			<?php 
 			/**
-			 * div_begin_footer hook
+			 * df_begin_footer hook
 			 *
-			 * @hooked div_begin_footer_container - 10
+			 * @hooked df_begin_footer_container - 10
 			 */
-			do_action('div_begin_footer'); ?>
+			do_action('df_begin_footer'); ?>
 			    	
     			<?php # Insert footer content ?>
+
+    			<?php $df_copyright ?>
 			    
 			<?php 
 			/**
-			 * div_end_footer hook
+			 * df_end_footer hook
 			 *
-			 * @hooked div_copyright() - 10
-			 * @hooked div_end_footer_container - 15
+			 * @hooked df_copyright() - 10
+			 * @hooked df_end_footer_container - 15
 			 */
-			do_action('div_end_footer'); ?>
+			do_action('df_end_footer'); ?>
 
 		</div> <!-- end #container -->
 

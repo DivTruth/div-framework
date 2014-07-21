@@ -48,7 +48,7 @@ if ( ! class_exists('DF') ) {
             $this->define_constants();
 
             # If child theme active, then start the DF engine, else load splash page
-            if( DIV_NAME != "Div Framework")
+            if( DF_NAME != "Div Framework")
                 $this->df_engine();
             else
                 add_action( 'template_redirect', array( $this,'df_fallback') );
@@ -82,10 +82,10 @@ if ( ! class_exists('DF') ) {
              * CONSTANT: Theme Options Prefix
              * This constant is used for retrieving theme defined options from the options table.
              *
-             * @example get_option(DIV_OPTION.'framework_version');
+             * @example get_option(DF_OPTION.'framework_version');
              * @since   1.0
              */
-            if(!defined('DIV_OPTION')) define('DIV_OPTION', 'div_option_');
+            if(!defined('DF_OPTION')) define('DF_OPTION', 'df_option_');
 
             /**
              * CONSTANT: Child Theme Version
@@ -99,15 +99,15 @@ if ( ! class_exists('DF') ) {
             /**
              * Parent theme path constants
              */
-            define( 'DIV_NAME',             wp_get_theme() );
-            define( 'DIV_APPEARANCE_DIR',   TEMPLATEPATH.'/appearance/' );
-            define( 'DIV_APPEARANCE_URL',   get_template_directory_uri().'/appearance/' );
-            define( 'DIV_INC_DIR',          TEMPLATEPATH.'/inc/' );
-            define( 'DIV_INC_URL',          get_template_directory_uri().'/inc/' );
-            define( 'DIV_IMAGES_DIR',       DIV_APPEARANCE_DIR.'images/' );
-            define( 'DIV_IMAGES_URL',       DIV_APPEARANCE_URL.'images/' );
-            define( 'DIV_JS_DIR',           DIV_INC_DIR.'js/' );
-            define( 'DIV_JS_URL',           DIV_INC_URL.'js/' );
+            define( 'DF_NAME',             wp_get_theme() );
+            define( 'DF_APPEARANCE_DIR',   TEMPLATEPATH.'/appearance/' );
+            define( 'DF_APPEARANCE_URL',   get_template_directory_uri().'/appearance/' );
+            define( 'DF_INC_DIR',          TEMPLATEPATH.'/inc/' );
+            define( 'DF_INC_URL',          get_template_directory_uri().'/inc/' );
+            define( 'DF_IMAGES_DIR',       DF_APPEARANCE_DIR.'images/' );
+            define( 'DF_IMAGES_URL',       DF_APPEARANCE_URL.'images/' );
+            define( 'DF_JS_DIR',           DF_INC_DIR.'js/' );
+            define( 'DF_JS_URL',           DF_INC_URL.'js/' );
 
             /**
              * Child theme path constants
@@ -133,10 +133,10 @@ if ( ! class_exists('DF') ) {
          *
          */
         function df_engine(){
-            require_once( DIV_INC_DIR.'/div.php' );
-            require_once( DIV_INC_DIR.'/admin.php' );
-            require_once( DIV_INC_DIR.'/div-filters.php' );  #Include Div Framework Filters
-            require_once( DIV_INC_DIR.'/div-hooks.php' );    #Include Div Framework Hooks
+            require_once( DF_INC_DIR.'/engine.php' );
+            require_once( DF_INC_DIR.'/admin.php' );
+            require_once( DF_INC_DIR.'/df-filters.php' );  #Include Div Framework Filters
+            require_once( DF_INC_DIR.'/df-hooks.php' );    #Include Div Framework Hooks
 
             if( file_exists(THEME_INC_DIR.'sidebars.php') )
                 require_once(THEME_INC_DIR.'sidebars.php');
@@ -165,7 +165,7 @@ if ( ! class_exists('DF') ) {
          * @since 1.0
          *
          */
-        static function add_action( $tag, $hooks=array() ){
+        public static function add_action( $tag, $hooks=array() ){
             $prev_filter = array();
             $f = $GLOBALS['wp_filter'];
             if(isset($f[$tag])) {
@@ -182,6 +182,23 @@ if ( ! class_exists('DF') ) {
                 add_action( $tag, $hook, $priority );
             }
     	}
+
+        /**
+         * Get Field w/ ACF (hypothetical)
+         * All Div Framework options are registered with ACF (a required plugin),
+         * this funtion is used for getting fields in case ACF isn't loaded.
+         * @param string $tag
+         * @param array $hooks
+         * @return void
+         * 
+         * @since 1.0
+         */
+        public static function get_field( $field, $id="options" ){
+          if( class_exists('acf') )
+            return get_field( $field, $id );
+          else
+            return false;
+        }
     }
 
     function Div_Framework() {

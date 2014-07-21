@@ -5,7 +5,7 @@
  *
  * BEFORE YOU CHANGE ANYTHING:
  * Please note that you shouldn't need to change anything in this file. To control how the page is built, 
- * please consider using actions like add_action('div_head', 'new_function_name') to control 
+ * please consider using actions like add_action('df_head', 'new_function_name') to control 
  * elements loaded on the page. 
  */
 ?>
@@ -20,17 +20,17 @@
 	<head>
 		<?php 
 		/**
-		 * div_head hook
+		 * df_head hook
 		 *
-		 * @hooked div_page_title - 10
-		 * @hooked div_charset - 15
-		 * @hooked div_google_frame - 20
-		 * @hooked div_mobile_meta - 25
-		 * @hooked div_favicon - 30
-		 * @hooked div_pingback - 35
-		 * @hooked div_html5_shiv - 40
+		 * @hooked df_page_title - 10
+		 * @hooked df_charset - 15
+		 * @hooked df_google_frame - 20
+		 * @hooked df_mobile_meta - 25
+		 * @hooked df_favicon - 30
+		 * @hooked df_pingback - 35
+		 * @hooked df_html5_shiv - 40
 		 */
-		do_action('div_head'); ?>
+		do_action('df_head'); ?>
 
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
@@ -54,7 +54,7 @@
 					<?php get_template_part('parts/header/part','titlespace'); ?>
 					
 					<nav id="full" class="full" role="navigation">
-						<?php div_main_nav(); ?>
+						<?php df_main_nav(); ?>
 					</nav>
 
 				</div> <!-- end #inner-header -->

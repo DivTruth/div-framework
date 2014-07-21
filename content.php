@@ -17,7 +17,7 @@
 	 * @hooked div_post_meta - 25
 	 * @hooked div_clear - 30
 	 */
-	do_action('div_post_content'); ?>
+	do_action('df_post_content'); ?>
 
     <?php do_action('before_post_close'); ?>
 

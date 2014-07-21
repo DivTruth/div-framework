@@ -25,7 +25,7 @@
 				</div>
 			</div>
 			<nav id="mobile" role="navigation">
-				<?php div_mobile_nav(); ?>
+				<?php df_mobile_nav(); ?>
 			</nav>
 		</div>
 	</div>

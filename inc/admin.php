@@ -12,23 +12,23 @@
 /*=====// CUSTOM LOGIN/ADMIN PAGE //===================*/
 
 # Calling your own login css so you can style it
-function div_login_styles() {
+function df_login_styles() {
 	wp_enqueue_style( 'theme_login_styles', THEME_APPEARANCE_URL.'css/login.css', false );
 }
 
-function div_admin_styles() {
+function df_admin_styles() {
 	wp_enqueue_style( 'theme_admin_styles', THEME_APPEARANCE_URL.'css/admin.css', false );
 }
 
 # Calling it only on the login page
-add_action( 'login_enqueue_scripts', 'div_login_styles', 10 );
+add_action( 'login_enqueue_scripts', 'df_login_styles', 10 );
 
 # Calling it only admin
-add_action( 'admin_enqueue_scripts', 'div_admin_styles', 15 );
+add_action( 'admin_enqueue_scripts', 'df_admin_styles', 15 );
 
 # Custom Backend Footer
-add_filter('admin_footer_text', 'div_custom_admin_footer');
-function div_custom_admin_footer() {
+add_filter('admin_footer_text', 'df_custom_admin_footer');
+function df_custom_admin_footer() {
 	_e('<span id="footer-thankyou">Powered by <a href="http://www.divblend.com" target="_blank">The Div Framework</a></span>.', 'div-framework');
 }
 
@@ -36,7 +36,7 @@ function div_custom_admin_footer() {
 
 # TODO: Need to make these theme support options available on a developers options page
 
-add_theme_support( 'post-formats', apply_filters( 'div_post_formats', array( 'gallery', 'image' ) ) );
+add_theme_support( 'post-formats', apply_filters( 'df_post_formats', array( 'gallery', 'image' ) ) );
 add_theme_support( 'widgets' );
 add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' ); 
@@ -48,16 +48,16 @@ add_theme_support( 'html5' );
 # Enable the default menus
 register_nav_menus(
 	array(
-		'main-nav' => __( 'Main Navigation', 'div_framework' ),   // main nav in header
-		'mobile-nav' => __( 'Mobile Navigation', 'div_framework' ), // alternative main menu for mobile
+		'main-nav' => __( 'Main Navigation', 'df_framework' ),   // main nav in header
+		'mobile-nav' => __( 'Mobile Navigation', 'df_framework' ), // alternative main menu for mobile
 	)
 );
 
-function div_main_nav($newOptions = array()) {
+function df_main_nav($newOptions = array()) {
     $options = array(
         'container' => false,                               	// remove nav container
         'container_class' => 'menu clearfix',               	// class of container (should you choose to use it)
-        'menu' => __( 'Main Navigation', 'div_framework' ),   	// nav name
+        'menu' => __( 'Main Navigation', 'df_framework' ),   	// nav name
         'menu_class' => 'nav top-nav clearfix',             	// adding custom nav class
         'theme_location' => 'main-nav',                     	// where it's located in the theme
         'before' => '',                                     	// before the menu
@@ -65,16 +65,16 @@ function div_main_nav($newOptions = array()) {
         'link_before' => '',                                	// before each link
         'link_after' => '',                                 	// after each link
         'depth' => 0,                                       	// limit the depth of the nav
-        'fallback_cb' => 'div_framework_main_nav_cb',         	// Callback function if no menu found
+        'fallback_cb' => 'df_framework_main_nav_cb',         	// Callback function if no menu found
     );
     wp_nav_menu(array_merge($options, $newOptions));
-} /* end div_framework main nav */
+} /* end df_framework main nav */
 
-function div_mobile_nav($newOptions = array()) {
+function df_mobile_nav($newOptions = array()) {
     $options = array(
         'container' => false,                               	// remove nav container
         'container_class' => 'menu clearfix',               	// class of container (should you choose to use it)
-        'menu' => __( 'Mobile Navigation', 'div_framework' ), 	// nav name
+        'menu' => __( 'Mobile Navigation', 'df_framework' ), 	// nav name
         'menu_class' => 'nav top-nav clearfix',             	// adding custom nav class
         'theme_location' => 'mobile-nav',                   	// where it's located in the theme
         'before' => '',                                     	// before the menu
@@ -82,12 +82,12 @@ function div_mobile_nav($newOptions = array()) {
         'link_before' => '',                                	// before each link
         'link_after' => '',                                 	// after each link
         'depth' => 0,                                       	// limit the depth of the nav
-        'fallback_cb' => 'div_framework_main_nav_cb'
+        'fallback_cb' => 'df_framework_main_nav_cb'
     );
     wp_nav_menu(array_merge($options, $newOptions));
-} /* end div_framework mobile nav */
+} /* end df_framework mobile nav */
 
-function div_framework_main_nav_cb(){
+function df_framework_main_nav_cb(){
     echo '<ul id="menu-main-menu-1" class="nav top-nav clearfix">';
         wp_list_pages('sort_column=menu_order&title_li=');
     echo '</ul>';
