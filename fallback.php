@@ -45,7 +45,7 @@
 	<body <?php body_class(); ?>>
 
 		<div style="margin: 20px auto; text-align: center;">
-			<img src="<?php echo DIV_APPEARANCE_URL ?>images/header-logo.png">
+			<img src="<?php echo DF_APPEARANCE_URL; ?>images/header-logo.png">
 		</div>
 		<div id="welcome_container" style="border-radius:10px; background:#eee; border: 1px solid #ccc; margin: 20px auto; padding:40px; max-width: 800px; width: 80%;">
 			<h1>Welcome to the Div Framework</h1>
