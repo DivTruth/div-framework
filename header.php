@@ -46,6 +46,8 @@
 
 		<div id="container">
 			<header class="header">
+				
+				<?php df_top_nav(); ?>
 
 				<?php get_template_part('parts/header/part','mobile-menu'); ?>
 
@@ -53,9 +55,7 @@
 					
 					<?php get_template_part('parts/header/part','titlespace'); ?>
 					
-					<nav id="full" class="full" role="navigation">
-						<?php df_main_nav(); ?>
-					</nav>
+					<?php df_primary_nav(); ?>
 
 				</div> <!-- end #inner-header -->
 			

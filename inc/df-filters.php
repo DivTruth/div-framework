@@ -277,23 +277,6 @@ if ( ! function_exists( 'df_404_message' ) ) {
 
 /*===================// FOOTER //===================*/
 
-
-if ( ! function_exists( 'df_begin_footer_container' ) ) {
-
-  /**
-   * Output Footer Opening Tags
-   * @access public
-   * @subpackage  Framework/Footer
-   * @return void
-   */
-  function df_begin_footer_container(){
-    $html = '<footer class="footer" role="contentinfo">
-      <div id="inner-footer" class="wrap clearfix">';
-    echo apply_filters( 'df_begin_footer_container', $html );
-  }
-
-}
-
 if ( ! function_exists( 'df_copyright' ) ) {
 
   /**
@@ -306,8 +289,10 @@ if ( ! function_exists( 'df_copyright' ) ) {
     // if( $DF::get_field('site_copyright') != "" || !$DF::get_field('site_copyright') ) :
     //   echo $DF::get_field('site_copyright');
     // else : 
-      $copyright = '&copy; '.date('Y').' '.get_bloginfo('name').' All Rights Reserved. <br>';
-      $copyright .= 'Site powered by <a href="http://www.divblend.com" target="_blank">Div Framework</a>.</p>';
+      $copyright = '<p class="copyright">';
+        $copyright .= '&copy; '.date('Y').' '.get_bloginfo('name').' All Rights Reserved. <br>';
+        $copyright .= 'Site powered by <a href="http://www.divblend.com" target="_blank">Div Framework</a>.</p>';
+      $copyright .= '</p>';
       echo apply_filters( 'df_copyright', $copyright );
     // endif;  
   }

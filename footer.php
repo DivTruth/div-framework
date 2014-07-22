@@ -1,23 +1,19 @@
-			<?php 
-			/**
-			 * df_begin_footer hook
-			 *
-			 * @hooked df_begin_footer_container - 10
-			 */
-			do_action('df_begin_footer'); ?>
-			    	
-    			<?php # Insert footer content ?>
 
-    			<?php $df_copyright ?>
-			    
-			<?php 
-			/**
-			 * df_end_footer hook
-			 *
-			 * @hooked df_copyright() - 10
-			 * @hooked df_end_footer_container - 15
-			 */
-			do_action('df_end_footer'); ?>
+			<footer class="footer" role="contentinfo">
+				<?php df_footer_nav(); ?>
+
+      			<div id="inner-footer" class="wrap clearfix">
+
+      				<?php 
+					/**
+					 * df_footer hook
+					 *
+					 * @hooked df_copyright - 10
+					 */
+					do_action('df_footer'); ?>
+
+      			</div>
+			</footer>
 
 		</div> <!-- end #container -->
 

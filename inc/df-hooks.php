@@ -96,24 +96,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /*====// FOOTER //=====================*/
 
 /**
- * Div open footer tag
- *
- * @see df_begin_footer_container() - 10
- */
-DF::add_action( 'df_begin_footer' , array(
-  'df_begin_footer_container' => 10,
-  )
-);
-
-/**
- * Div close footer tag
+ * Footer tag
  *
  * @see df_copyright() - 10
- * @see df_end_footer_container() - 15
  */
-DF::add_action( 'df_end_footer' , array(
+DF::add_action( 'df_footer' , array(
   'df_copyright' => 10,
-  'df_end_footer_container' => 15,
   )
 );
 
