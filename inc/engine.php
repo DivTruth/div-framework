@@ -32,18 +32,18 @@ function df_scripts_and_styles() {
 
     # register main stylesheets
     if( file_exists( THEME_APPEARANCE_DIR.'css/style.css' ) )
-      wp_register_style( 'df-theme-stylesheet', THEME_APPEARANCE_URL.'css/style.css', array(), '', 'all', true );
+      wp_register_style( 'df-theme-stylesheet', THEME_APPEARANCE_URL.'css/style.css', array(), false, 'all', true );
     else 
-      wp_register_style( 'df-theme-stylesheet', DF_APPEARANCE_URL.'css/style.css', array(), '', 'all', true );
+      wp_register_style( 'df-theme-stylesheet', DF_APPEARANCE_URL.'css/style.css', array(), false, 'all', true );
 
     # ie-only style sheet
     wp_register_style( 'df-ie-only', THEME_APPEARANCE_URL.'css/ie.css', array('df-starter-stylesheet'), '' );
 
     # load child theme custom scripts file in the footer
     if ( file_exists(DF_JS_DIR.'scripts.min.js') )
-      wp_register_script( 'df-js', DF_JS_URL.'scripts.min.js', array( 'jquery' ), '', true );
+      wp_register_script( 'df-js', DF_JS_URL.'scripts.min.js', array( 'jquery' ), false, true );
     else
-      wp_register_script( 'df-js', DF_JS_URL.'scripts.js', array( 'jquery' ), '', true );
+      wp_register_script( 'df-js', DF_JS_URL.'scripts.js', array( 'jquery' ), false, true );
 
     // enqueue styles and scripts
     wp_enqueue_script( 'df-modernizr' );
