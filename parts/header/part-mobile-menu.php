@@ -1,6 +1,12 @@
+<?php 
+/**
+ * Div Framework stock responsive mobile menu
+ *
+ */ ?>
+
 <div id="mobile-menu" class="mobile">
-	<div id="inner-mobile-menu" class="wrap">
-		<div id="mobile-menu-header">
+	<div class="inner-mobile-menu wrap">
+		<div class="mobile-menu-header">
 			<ul class="icons">
 				<li id="menu-icon" class="menu-icon"><div></div></li>
 				<li class="mobile-logo">
@@ -8,12 +14,12 @@
 						<div></div>
 					</a>
 				</li>
-				<li id="search-icon" class="search-icon"><div></div></li>
+				<li class="search-icon"><div></div></li>
 			</ul>
 		</div>
-		<div id="mobile-menu-content">
-			<div id="mobile-search-container">
-				<div id="mobile-search" class="wrap">
+		<div class="mobile-menu-content">
+			<div class="mobile-search-container">
+				<div class="mobile-search wrap">
 					<form method="get" id="mobile-searchform" action="<?php home_url(); ?>/">
 						<div id="mobile-search-submit">
 							<input type="submit" id="searchsubmit" value="Search" class="btn" />
@@ -24,9 +30,8 @@
 					</form>
 				</div>
 			</div>
-			<nav id="mobile" role="navigation">
-				<?php df_mobile_nav(); ?>
-			</nav>
+			
+			<?php df_mobile_nav(); ?>
 		</div>
 	</div>
 </div>

@@ -116,7 +116,7 @@ if ( ! class_exists('DF') ) {
             define( 'THEME_APPEARANCE_DIR', get_stylesheet_directory().'/appearance/' );
             define( 'THEME_APPEARANCE_URL', get_stylesheet_directory_uri().'/appearance/' );
             define( 'THEME_INC_DIR',        get_stylesheet_directory().'/inc/' );
-            define( 'THEME_INC_URL',        get_template_directory_uri().'/inc/' );
+            define( 'THEME_INC_URL',        get_stylesheet_directory_uri().'/inc/' );
             define( 'THEME_IMAGES_DIR',     THEME_APPEARANCE_DIR.'images/' );
             define( 'THEME_IMAGES_URL',     THEME_APPEARANCE_URL.'images/' );
             define( 'THEME_JS_DIR',         THEME_INC_DIR.'js/' );

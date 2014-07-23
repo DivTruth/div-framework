@@ -77,7 +77,7 @@ function df_top_nav($newOptions = array()) {
     $options = array(
         'container' => 'nav',
         'container_id' => 'top-navigation',
-        'container_class' => 'top-nav clearfix',
+        'container_class' => 'full top-nav clearfix',
         'menu' => __( 'Top Bar Navigation', 'df_framework' ),
         'menu_class' => 'inner-nav clearfix',
         'theme_location' => 'top-nav',
@@ -104,7 +104,7 @@ function df_mobile_nav($newOptions = array()) {
         'link_before' => '',
         'link_after' => '',
         'depth' => 2,
-        'fallback_cb' => 'df_framework_main_nav_cb'
+        'fallback_cb' => 'df_framework_mobile_nav_cb'
     );
     wp_nav_menu(array_merge($options, apply_filters( 'df_mobile_nav', $newOptions ) ));
 } /* end df_framework mobile nav */
@@ -128,6 +128,14 @@ function df_footer_nav($newOptions = array()) {
 
 function df_framework_main_nav_cb(){
     echo '<nav class="nav">';
+        echo '<ul class="inner-nav clearfix">';
+            wp_list_pages('sort_column=menu_order&title_li=');
+        echo '</ul>';
+    echo '</nav>';
+}
+
+function df_framework_mobile_nav_cb(){
+    echo '<nav id="mobile" class="navigation">';
         echo '<ul class="inner-nav clearfix">';
             wp_list_pages('sort_column=menu_order&title_li=');
         echo '</ul>';
