@@ -13,11 +13,11 @@
 
 # Calling your own login css so you can style it
 function df_login_styles() {
-	wp_enqueue_style( 'theme_login_styles', THEME_APPEARANCE_URL.'css/login.css', false );
+    wp_enqueue_style( 'theme_login_styles', THEME_APPEARANCE_URL.'css/login.css', false );
 }
 
 function df_admin_styles() {
-	wp_enqueue_style( 'theme_admin_styles', THEME_APPEARANCE_URL.'css/admin.css', false );
+    wp_enqueue_style( 'theme_admin_styles', THEME_APPEARANCE_URL.'css/admin.css', false );
 }
 
 # Calling it only on the login page
@@ -29,7 +29,7 @@ add_action( 'admin_enqueue_scripts', 'df_admin_styles', 15 );
 # Custom Backend Footer
 add_filter('admin_footer_text', 'df_custom_admin_footer');
 function df_custom_admin_footer() {
-	_e('<span id="footer-thankyou">Powered by <a href="http://www.divblend.com" target="_blank">The Div Framework</a></span>.', 'div-framework');
+    _e('<span id="footer-thankyou">Powered by <a href="http://www.divblend.com" target="_blank">The Div Framework</a></span>.', 'div-framework');
 }
 
 /*=====// THEME SUPPORTS //===================*/
@@ -47,12 +47,12 @@ add_theme_support( 'html5' );
 
 # Enable the default menus
 register_nav_menus(
-	array(
+    array(
         'top-nav' => __( 'Top Navigation', 'df_framework' ),            // top nav in header
-		'primary-nav' => __( 'Primary Navigation', 'df_framework' ),   // primary nav in header
+        'primary-nav' => __( 'Primary Navigation', 'df_framework' ),   // primary nav in header
         'mobile-nav' => __( 'Mobile Navigation', 'df_framework' ),    // alternative main menu for mobile
-		'footer-nav' => __( 'Footer Navigation', 'df_framework' ),    // alternative main menu for mobile
-	)
+        'footer-nav' => __( 'Footer Navigation', 'df_framework' ),    // alternative main menu for mobile
+    )
 );
 
 function df_primary_nav($newOptions = array()) {
