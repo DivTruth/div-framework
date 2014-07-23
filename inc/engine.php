@@ -42,12 +42,15 @@ function df_scripts_and_styles() {
     wp_register_style( 'df-ie-only', THEME_APPEARANCE_URL.'css/ie.css', array('df-starter-stylesheet'), '' );
 
     # load child theme custom scripts file in the footer
-    if ( file_exists(THEME_JS_DIR.'scripts.min.js') )
-      wp_register_script( 'df-js', THEME_JS_URL.'scripts.min.js', array( 'jquery' ), false, true );
-    elseif( file_exists(THEME_JS_DIR.'scripts.js') )
-      wp_register_script( 'df-js', THEME_JS_URL.'scripts.js', array( 'jquery' ), false, true );
-    else
+    if ( file_exists(THEME_JS_DIR.'scripts.min.js') ) : 
+      $version = filemtime(THEME_JS_DIR.'scripts.min.js');
+      wp_register_script( 'df-js', THEME_JS_URL.'scripts.min.js', array( 'jquery' ), $version, true );
+    elseif( file_exists(THEME_JS_DIR.'scripts.js') ) :
+      $version = filemtime(THEME_JS_DIR.'scripts.js');
+      wp_register_script( 'df-js', THEME_JS_URL.'scripts.js', array( 'jquery' ), $version, true );
+    else :
       wp_register_script( 'df-js', DF_JS_URL.'scripts.js', array( 'jquery' ), false, true );
+    endif;
 
     // enqueue styles and scripts
     wp_enqueue_script( 'df-modernizr' );
