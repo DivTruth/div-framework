@@ -31,10 +31,12 @@ function df_scripts_and_styles() {
     wp_register_script( 'df-modernizr', DF_JS_URL.'modernizr.custom.min.js', array('jquery'), '2.5.3', true );
 
     # register main stylesheets
-    if( file_exists( THEME_APPEARANCE_DIR.'css/style.css' ) )
-      wp_register_style( 'df-theme-stylesheet', THEME_APPEARANCE_URL.'css/style.css', array(), null, 'all' );
-    else 
+    if( file_exists( THEME_APPEARANCE_DIR.'css/style.css' ) ) :
+      $version = filemtime(THEME_APPEARANCE_DIR.'css/style.css');
+      wp_register_style( 'df-theme-stylesheet', THEME_APPEARANCE_URL.'css/style.css', array(), $version, 'all' );
+    else :
       wp_register_style( 'df-theme-stylesheet', DF_APPEARANCE_URL.'css/style.css', array(), null, 'all' );
+    endif;
 
     # ie-only style sheet
     wp_register_style( 'df-ie-only', THEME_APPEARANCE_URL.'css/ie.css', array('df-starter-stylesheet'), '' );
