@@ -32,9 +32,9 @@ function df_scripts_and_styles() {
 
     # register main stylesheets
     if( file_exists( THEME_APPEARANCE_DIR.'css/style.css' ) )
-      wp_register_style( 'df-theme-stylesheet', THEME_APPEARANCE_URL.'css/style.css', array(), false, 'all', true );
+      wp_register_style( 'df-theme-stylesheet', THEME_APPEARANCE_URL.'css/style.css', array(), null, 'all' );
     else 
-      wp_register_style( 'df-theme-stylesheet', DF_APPEARANCE_URL.'css/style.css', array(), false, 'all', true );
+      wp_register_style( 'df-theme-stylesheet', DF_APPEARANCE_URL.'css/style.css', array(), null, 'all' );
 
     # ie-only style sheet
     wp_register_style( 'df-ie-only', THEME_APPEARANCE_URL.'css/ie.css', array('df-starter-stylesheet'), '' );
