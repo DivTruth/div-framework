@@ -56,9 +56,9 @@
     /**
      * df_end_content hook
      *
-     * @hooked df_end_main_container - 5
-     * @hooked get_sidebar - 10
-     * @hooked df_end_content_container - 15
+     * @hooked df_end_main_container - 10
+     * @hooked get_sidebar - 15
+     * @hooked df_end_content_container - 20
      */
     do_action('df_end_content') ?>
 
