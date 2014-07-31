@@ -88,13 +88,13 @@ if ( ! class_exists('DF') ) {
             if(!defined('DF_OPTION')) define('DF_OPTION', 'df_option_');
 
             /**
-             * CONSTANT: Child Theme Version
+             * CONSTANT: Div Framework Version
              * theme version number for appending to script and style enqueue
              *
              * @since   1.0
              */
             $theme_data = wp_get_theme();
-            define('THEME_VERSION', $theme_data['Version']);
+            define('DF_THEME_VERSION', $theme_data['Version']);
 
             /**
              * Parent theme path constants
@@ -137,9 +137,9 @@ if ( ! class_exists('DF') ) {
             require_once( DF_INC_DIR.'/admin.php' );
             require_once( DF_INC_DIR.'/df-filters.php' );  #Include Div Framework Filters
             require_once( DF_INC_DIR.'/df-hooks.php' );    #Include Div Framework Hooks
+			#register default sidebars from Div Framework or custom sidebars from child theme
+	        get_template_part('inc/register-sidebars');
 
-            if( file_exists(THEME_INC_DIR.'sidebars.php') )
-                require_once(THEME_INC_DIR.'sidebars.php');
         }
 
         /**
