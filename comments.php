@@ -14,7 +14,7 @@ if(!function_exists('wlfw_comment')) { function wlfw_comment( $comment, $args, $
 		case 'trackback' :
 	?>
 	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'wlfw' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'wlfw' ), '<span class="edit-link">', '</span>' ); ?></p>
+		<p><?php _e( 'Pingback:', DF_TEXT_DOMAIN ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', DF_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 			break;
 		default :
@@ -31,18 +31,18 @@ if(!function_exists('wlfw_comment')) { function wlfw_comment( $comment, $args, $
 						echo get_avatar( $comment, $avatar_size );
 
 						/* translators: 1: comment author, 2: date and time */
-						printf( __( '%1$s on %2$s <span class="says">said:</span>', 'wlfw' ),
+						printf( __( '%1$s on %2$s <span class="says">said:</span>', DF_TEXT_DOMAIN ),
 							sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
 							sprintf( '<a href="%1$s"><time pubdate datetime="%2$s">%3$s</time></a>',
 								esc_url( get_comment_link( $comment->comment_ID ) ),
 								get_comment_time( 'c' ),
 								/* translators: 1: date, 2: time */
-								sprintf( __( '%1$s at %2$s', 'wlfw' ), get_comment_date(), get_comment_time() )
+								sprintf( __( '%1$s at %2$s', DF_TEXT_DOMAIN ), get_comment_date(), get_comment_time() )
 							)
 						);
 					?>
 
-					<?php edit_comment_link( __( 'Edit', 'wlfw' ), '<span class="edit-link">', '</span>' ); ?>
+					<?php edit_comment_link( __( 'Edit', DF_TEXT_DOMAIN ), '<span class="edit-link">', '</span>' ); ?>
 				</div><!-- .comment-author .vcard -->
 
 				<?php if ( $comment->comment_approved == '0' ) : ?>
@@ -55,7 +55,7 @@ if(!function_exists('wlfw_comment')) { function wlfw_comment( $comment, $args, $
 			<div class="comment-content"><?php comment_text(); ?></div>
 
 			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply <span>&darr;</span>', 'wlfw' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply <span>&darr;</span>', DF_TEXT_DOMAIN ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
 		</article><!-- #comment-## -->
 
@@ -92,8 +92,8 @@ if ( is_singular() ) wp_enqueue_script( "comment-reply" );
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above">
 			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'wlfw' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'wlfw' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'wlfw' ) ); ?></div>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', DF_TEXT_DOMAIN ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', DF_TEXT_DOMAIN ) ); ?></div>
 		</nav>
 		<?php endif; // check for comment navigation ?>
 
@@ -112,8 +112,8 @@ if ( is_singular() ) wp_enqueue_script( "comment-reply" );
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-below">
 			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'wlfw' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'wlfw' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'wlfw' ) ); ?></div>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', DF_TEXT_DOMAIN ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', DF_TEXT_DOMAIN ) ); ?></div>
 		</nav>
 		<?php endif; // check for comment navigation ?>
 
@@ -123,7 +123,7 @@ if ( is_singular() ) wp_enqueue_script( "comment-reply" );
 		 */
 		elseif ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="nocomments"><?php _e( 'Comments are closed.', 'wlfw' ); ?></p>
+		<p class="nocomments"><?php _e( 'Comments are closed.', DF_TEXT_DOMAIN ); ?></p>
 	<?php endif; ?>
 
 	<?php 

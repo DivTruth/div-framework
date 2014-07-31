@@ -22,7 +22,7 @@ if ( ! function_exists( 'df_page_title' ) ) {
    */
   function df_page_title($title){
     $title = '<title>'.get_bloginfo('name').' | ';
-      $title .= is_home() ? get_bloginfo('description') : wp_title('');
+      $title .= is_home() ? get_bloginfo('description') : wp_title('', false);
     $title .= '</title>';
     echo apply_filters( 'df_page_title', $title );
   }

@@ -1,26 +1,17 @@
 /******************************************************************
 Theme Name: Div Framework
-Theme URI: https://github.com/DivTruth/div-framework
-Description: A solid, bones-like, SASS framework with an emphasis on a mobile first approach. One of the few frameworks that aims to maintain the WordPress philosophy that themes are responsible for appearance while plugins maintain the functionality. This is a <strong>developers</strong> framework, designed to ease the pain of theme development. Part of the <a href="http://divblend.com" target="_blank">Div Blend</a> package, developed by <a href="http://divtruth.com" target="_blank">Div Truth</a>
-Author: Div Truth
-Author URI: http://www.divtruth.com
+Theme URI: https://divblend.com/div-framework/
+Author: Div Blend Team
+Author URI: http://divblend.com/div-blend-contributors/
+Description: A solid, bones-like, SASS framework with an emphasis on a mobile first approach. One of the few frameworks that aims to maintain the WordPress philosophy that themes are responsible for appearance while plugins maintain the functionality. This is a <strong>developers</strong> framework, designed to ease the pain of theme development. Part of the <a href="http://divblend.com" target="_blank">Div Blend</a> package, developed by <a href="http://divblend.com/div-blend-contributors/" target="_blank">Div Blend Contributors</a>
 Version: 0.2.1
-Tags: flexble-width, translation-ready, microformats, rtl-language-support
-Template: div-framework
+Tags: framework, parent-theme, flexble-width, translation-ready, microformats, rtl-language-support
 GitHub Theme URI: https://github.com/DivTruth/div-framework
 GitHub Branch: master
+Text Domain: div_framework
 
-License:
-    A Div Framework Theme 
-    Copyright (C) 2013  Div Truth LLC
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+Why is there no CSS here! Why won't my CSS here apply changes to the page?
+This theme loads the stylesheet from /appearance/css/style.css so that the
+CSS file can be minified! If you minified this file... the theme would be broken.
+Learn more at http://divblend.com/div-blend/styles-javascripts-enqueue-methods/
 ******************************************************************/
