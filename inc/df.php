@@ -61,7 +61,7 @@ if ( ! class_exists('DF') ) {
          * @since 2.1
          */
         public function __clone() {
-            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'divstarter' ), '2.1' );
+            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', DF_TEXT_DOMAIN ), '2.1' );
         }
 
         /**
@@ -70,7 +70,7 @@ if ( ! class_exists('DF') ) {
          * @since 2.1
          */
         public function __wakeup() {
-            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'divstarter' ), '2.1' );
+            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', DF_TEXT_DOMAIN ), '2.1' );
         }
 
         /**
