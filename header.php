@@ -42,7 +42,7 @@
 	 * The body is hidden until the CSS is loaded so that nothing appears until it is styled,
 	 * therefore the CSS must reset this to be displayed.
 	 */ ?>
-	<body <?php body_class(); ?> style="opacity:0;filter: alpha(opacity=0); display:none;">
+	<body <?php body_class(); ?> style="<?php apply_filters('body_styles',''); ?>">
 
 		<div id="container">
 			<header class="header">
