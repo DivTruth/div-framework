@@ -96,6 +96,14 @@ if ( ! class_exists('DF') ) {
             $theme_data = wp_get_theme();
             define('DF_THEME_VERSION', $theme_data['Version']);
 
+	        /**
+	         * CONSTANT: Div Framework Text Domain
+	         * Used for internationalization or multi-language methods
+	         *
+	         * @since   1.0
+	         */
+	        define('DF_TEXT_DOMAIN', 'div_framework');
+
             /**
              * Parent theme path constants
              */
