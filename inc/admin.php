@@ -13,11 +13,13 @@
 
 # Calling your own login css so you can style it
 function df_login_styles() {
-    wp_enqueue_style( 'theme_login_styles', THEME_APPEARANCE_URL.'css/login.css', false );
+    $version = filemtime(THEME_APPEARANCE_DIR.'css/login.css');
+    wp_enqueue_style( 'theme_login_styles', THEME_APPEARANCE_URL.'css/login.css', false, $version );
 }
 
 function df_admin_styles() {
-    wp_enqueue_style( 'theme_admin_styles', THEME_APPEARANCE_URL.'css/admin.css', false );
+    $version = filemtime(THEME_APPEARANCE_DIR.'css/admin.css');
+    wp_enqueue_style( 'theme_admin_styles', THEME_APPEARANCE_URL.'css/admin.css', false, $version );
 }
 
 # Calling it only on the login page
