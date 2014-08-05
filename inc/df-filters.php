@@ -172,7 +172,10 @@ if ( ! function_exists( 'df_begin_content_container' ) ) {
      * @return void
      */
     function df_title_output(){
-      $html = '<h1>'. get_the_title(). '</h1>';
+      if( is_single() || is_page() )
+        $html = '<h1>'. get_the_title(). '</h1>';
+      else
+        $html = '<a href="'.get_permalink().'"><h1>'. get_the_title(). '</h1></a>';
       echo apply_filters( 'df_title_output', $html );
     }
 
