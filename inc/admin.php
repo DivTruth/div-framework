@@ -1,9 +1,8 @@
 <?php
 /**
  * Div Admin setup
- * This file handles the admin area and functions.
- * You can use this file to make changes to the
- * dashboard.
+ * This file handles the admin area and functions, including enques of login/admin styles, 
+ * theme_support_options, registered navigations, etc.
  *
  * @author: Div Truth
  * @license GPL
@@ -50,88 +49,92 @@ add_theme_support( 'html5' );
 # Enable the default menus
 register_nav_menus(
     array(
-        'top-nav' => __( 'Top Navigation', 'df_framework' ),            // top nav in header
-        'primary-nav' => __( 'Primary Navigation', 'df_framework' ),   // primary nav in header
-        'mobile-nav' => __( 'Mobile Navigation', 'df_framework' ),    // alternative main menu for mobile
-        'footer-nav' => __( 'Footer Navigation', 'df_framework' ),    // alternative main menu for mobile
+        'top-nav'           => __( 'Top Navigation', 'df_framework' ),          // top nav in header
+        'primary-nav'       => __( 'Primary Navigation', 'df_framework' ),      // primary nav in header
+        'mobile-nav'        => __( 'Mobile Navigation', 'df_framework' ),       // alternative main menu for mobile
+        'footer-nav'        => __( 'Footer Navigation', 'df_framework' ),       // alternative main menu for mobile
     )
 );
 
 function df_primary_nav($newOptions = array()) {
     $options = array(
-        'container' => 'nav',
-        'container_id' => 'primary-navigation',
-        'container_class' => 'full primary-nav clearfix',
-        'menu' => __( 'Primary Navigation', 'df_framework' ),
-        'menu_class' => 'inner-nav clearfix',
-        'theme_location' => 'primary-nav',
-        'before' => '',
-        'after' => '',
-        'link_before' => '',
-        'link_after' => '',
-        'depth' => 3,
-        'fallback_cb' => 'df_framework_main_nav_cb',
+        'container'         => 'nav',
+        'container_id'      => 'primary-navigation',
+        'container_class'   => 'full primary-nav clearfix',
+        'menu'              => __( 'Primary Navigation', 'df_framework' ),
+        'menu_class'        => 'inner-nav wrap clearfix',
+        'theme_location'    => 'primary-nav',
+        'items_wrap'        => '<ul id="%1$s" class="%2$s">'.apply_filters('df_primary_nav_items','%3$s').'</ul>',
+        'before'            => '',
+        'after'             => '',
+        'link_before'       => '',
+        'link_after'        => '',
+        'depth'             => 3,
+        'fallback_cb'       => 'df_framework_main_nav_cb',
     );
     wp_nav_menu(array_merge($options, apply_filters( 'df_primary_nav', $newOptions ) ));
 } /* end df_framework primary nav */
 
 function df_top_nav($newOptions = array()) {
     $options = array(
-        'container' => 'nav',
-        'container_id' => 'top-navigation',
-        'container_class' => 'full top-nav clearfix',
-        'menu' => __( 'Top Bar Navigation', 'df_framework' ),
-        'menu_class' => 'inner-nav clearfix',
-        'theme_location' => 'top-nav',
-        'before' => '',
-        'after' => '',
-        'link_before' => '',
-        'link_after' => '',
-        'depth' => 3,
-        'fallback_cb' => '__return_false',
+        'container'         => 'nav',
+        'container_id'      => 'top-navigation',
+        'container_class'   => 'full top-nav clearfix',
+        'menu'              => __( 'Top Bar Navigation', 'df_framework' ),
+        'menu_class'        => 'inner-nav clearfix',
+        'theme_location'    => 'top-nav',
+        'items_wrap'        => '<ul id="%1$s" class="%2$s">'.apply_filters('df_top_nav_items','%3$s').'</ul>',
+        'before'            => '',
+        'after'             => '',
+        'link_before'       => '',
+        'link_after'        => '',
+        'depth'             => 3,
+        'fallback_cb'       => '__return_false',
     );
     wp_nav_menu(array_merge($options, apply_filters( 'df_top_nav', $newOptions ) ));
 } /* end df_framework main nav */
 
 function df_mobile_nav($newOptions = array()) {
     $options = array(
-        'container' => 'nav',
-        'container_id' => 'mobile',
-        'container_class' => 'mobile-nav clearfix',
-        'menu' => __( 'Mobile Navigation', 'df_framework' ),
-        'menu_class' => 'inner-nav clearfix',
-        'theme_location' => 'mobile-nav',
-        'before' => '',
-        'after' => '',
-        'link_before' => '',
-        'link_after' => '',
-        'depth' => 2,
-        'fallback_cb' => 'df_framework_mobile_nav_cb'
+        'container'         => 'nav',
+        'container_id'      => 'mobile',
+        'container_class'   => 'mobile-nav clearfix',
+        'menu'              => __( 'Mobile Navigation', 'df_framework' ),
+        'menu_class'        => 'inner-nav clearfix',
+        'theme_location'    => 'mobile-nav',
+        'items_wrap'        => '<ul id="%1$s" class="%2$s">'.apply_filters('df_mobile_nav_items','%3$s').'</ul>',
+        'before'            => '',
+        'after'             => '',
+        'link_before'       => '',
+        'link_after'        => '',
+        'depth'             => 2,
+        'fallback_cb'       => 'df_framework_mobile_nav_cb'
     );
     wp_nav_menu(array_merge($options, apply_filters( 'df_mobile_nav', $newOptions ) ));
 } /* end df_framework mobile nav */
 
 function df_footer_nav($newOptions = array()) {
     $options = array(
-        'container' => 'nav',
-        'container_class' => 'footer-nav clearfix',
-        'menu' => __( 'Footer Navigation', 'df_framework' ),
-        'menu_class' => 'inner-nav clearfix',
-        'theme_location' => 'footer-nav',
-        'before' => '',
-        'after' => '',
-        'link_before' => '',
-        'link_after' => '',
-        'depth' => 1,
-        'fallback_cb' => '__return_false',
+        'container'         => 'nav',
+        'container_class'   => 'footer-nav clearfix',
+        'menu'              => __( 'Footer Navigation', 'df_framework' ),
+        'menu_class'        => 'inner-nav clearfix',
+        'theme_location'    => 'footer-nav',
+        'items_wrap'        => '<ul id="%1$s" class="%2$s">'.apply_filters('df_footer_nav_items','%3$s').'</ul>',
+        'before'            => '',
+        'after'             => '',
+        'link_before'       => '',
+        'link_after'        => '',
+        'depth'             => 1,
+        'fallback_cb'       => '__return_false',
     );
     wp_nav_menu(array_merge($options, apply_filters( 'df_footer_nav', $newOptions ) ));
 } /* end df_framework footer nav */
 
 function df_framework_main_nav_cb(){
     echo '<nav class="nav">';
-        echo '<ul class="inner-nav clearfix">';
-            wp_list_pages('sort_column=menu_order&title_li=');
+        echo '<ul class="inner-nav wrap clearfix">';
+            echo apply_filters('df_primary_nav_items', wp_list_pages('echo=0&sort_column=menu_order&title_li=') );
         echo '</ul>';
     echo '</nav>';
 }

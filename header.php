@@ -50,8 +50,8 @@
 					
 					<?php get_template_part('parts/header/part','titlespace'); ?>
 					
-					<?php df_primary_nav(); ?>
-
 				</div> <!-- end #inner-header -->
+					
+				<?php df_primary_nav(); ?>
 			
 			</header> <!-- end header -->

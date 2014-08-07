@@ -3,7 +3,7 @@
  * Div Framework Class
  * Defining some constants, loading all the required files and Adding some core functionality.
  *
- * @author      DivTruth
+ * @author      Div Blend Team
  * @category    Core
  * @package     Div Framework/Classes
  * @version     1.0
@@ -18,7 +18,7 @@ if ( ! class_exists('DF') ) {
         /**
          * @var string
          */
-        public $version = '1.0';
+        public static $version = '1.0';
 
         /**
          * @var DF The single instance of the class
@@ -52,7 +52,40 @@ if ( ! class_exists('DF') ) {
                 $this->df_engine();
             else
                 add_action( 'template_redirect', array( $this,'df_fallback') );
+        }
 
+        /**
+         * DF Engine
+         *
+         * @return void
+         *
+         * @since 1.0
+         *
+         */
+        function df_engine(){
+            require_once( DF_INC_DIR.'/engine.php' );
+            require_once( DF_INC_DIR.'/admin.php' );
+            require_once( DF_INC_DIR.'/df-filters.php' );  #Include Div Framework Filters
+            require_once( DF_INC_DIR.'/df-hooks.php' );    #Include Div Framework Hooks
+            
+            #register default sidebars from Div Framework or custom sidebars from child theme
+            get_template_part('inc/register-sidebars');
+
+            #register customizer options
+            add_action('customize_register', array( $this, 'df_customizer') );
+        }
+
+        /**
+         * DF Fallback
+         *
+         * @return void
+         *
+         * @since 1.0
+         *
+         */
+        function df_fallback(){
+            include( get_template_directory() . '/fallback.php' );
+            exit;
         }
 
         /**
@@ -133,34 +166,58 @@ if ( ! class_exists('DF') ) {
         }
 
         /**
-         * DF Engine
+         * DF Customizer
          *
+         * @param wp_customizer
          * @return void
          *
          * @since 1.0
          *
          */
-        function df_engine(){
-            require_once( DF_INC_DIR.'/engine.php' );
-            require_once( DF_INC_DIR.'/admin.php' );
-            require_once( DF_INC_DIR.'/df-filters.php' );  #Include Div Framework Filters
-            require_once( DF_INC_DIR.'/df-hooks.php' );    #Include Div Framework Hooks
-			#register default sidebars from Div Framework or custom sidebars from child theme
-	        get_template_part('inc/register-sidebars');
+        function df_customizer( $wp_customize ) {
 
+            /**
+             * Setup nav_logo
+             */
+            $wp_customize->add_section( 'df_nav_logo_section', array(
+                'title'         => __( 'Navigation Logo', 'div-framework' ),
+                'priority'      => 120,
+                'description'   => 'Upload a logo if you wish to include within the navigation bar',
+            ) );
+            $wp_customize->add_setting( 'df_nav_logo' );
+            $wp_customize->add_setting( 'df_nav_logo_float', array('default'   => 'left') );
+            $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'df_nav_logo', array(
+                'label'     => __( 'Logo', 'div-framework' ),
+                'section'   => 'df_nav_logo_section',
+                'settings'  => 'df_nav_logo',
+            ) ) );
+
+            $wp_customize->add_control(
+                'df_nav_logo_float',
+                array(
+                    'type' => 'select',
+                    'label' => 'Alignment',
+                    'section' => 'df_nav_logo_section',
+                    'choices' => array(
+                        'left' => 'Left',
+                        'right' => 'Right',
+                    ),
+                )
+            );
         }
 
-        /**
-         * DF Fallback
-         *
-         * @return void
-         *
-         * @since 1.0
-         *
-         */
-        function df_fallback(){
-            include( get_template_directory() . '/fallback.php' );
-            exit;
+        public static function nav_logo(){
+            $align = ( get_theme_mod( 'df_nav_logo_float' ) ) ? "float:".esc_attr( get_theme_mod( 'df_nav_logo_float' ) ).";" : "";
+            if ( get_theme_mod( 'df_nav_logo' ) ) :
+                $nav_logo = '<li class="logo" style="'.$align.'">
+                    <a href="'.esc_url( home_url() ).'" title="'.esc_attr( get_bloginfo( 'name', 'display' ) ).'" rel="home">
+                        <img src="'.esc_url( get_theme_mod( 'df_nav_logo' ) ).'" alt="'.esc_attr( get_bloginfo( 'name', 'display' ) ).'">
+                    </a>
+                </li>';
+                return apply_filters( 'nav_logo', $nav_logo );
+            else :
+                return null;
+            endif;
         }
 
         /**
@@ -189,24 +246,8 @@ if ( ! class_exists('DF') ) {
                     remove_action($tag, $hook, $prev_filter[$hook]);
                 add_action( $tag, $hook, $priority );
             }
-    	}
-
-        /**
-         * Get Field w/ ACF (hypothetical)
-         * All Div Framework options are registered with ACF (a required plugin),
-         * this funtion is used for getting fields in case ACF isn't loaded.
-         * @param string $tag
-         * @param array $hooks
-         * @return void
-         * 
-         * @since 1.0
-         */
-        public static function get_field( $field, $id="options" ){
-          if( class_exists('acf') )
-            return get_field( $field, $id );
-          else
-            return false;
         }
+
     }
 
     function Div_Framework() {

@@ -3,7 +3,7 @@
  * Div Template Filters
  * All Div Framework template filters are declared here
  *
- * @author    Div Truth
+ * @author    Div Blend Team
  * @category  Framework
  * @license   GPL
  */
@@ -126,6 +126,21 @@ if ( ! function_exists( 'df_html5_shiv' ) ) {
 }
 
 /*===================// CONTENT //===================*/
+
+if ( ! function_exists( 'main_nav_logo' ) ) {
+
+  /**
+   * Output the logo
+   * @access public
+   * @subpackage  Framework/Head
+   * @return void
+   */
+  function df_nav_logo($s){
+      return apply_filters( 'df_nav_logo', DF::nav_logo().$s );
+  }
+
+}
+add_filter( 'df_primary_nav_items', 'df_nav_logo' );
 
 if ( ! function_exists( 'df_begin_content_container' ) ) {
 

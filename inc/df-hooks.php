@@ -59,13 +59,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
    */
   DF::add_action( 'df_post_content' , array(
     'df_title_output' => 10,
+    'df_post_info' => 15,
     'the_content' => 20,
     'df_post_meta' => 25,
     'df_clear' => 30,
     )
   );
-  if( is_single() )
-    DF::add_action( 'df_post_content', 'df_post_info', 15 );
 
   /**
    * End Content Container

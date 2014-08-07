@@ -77,6 +77,19 @@ NOTES:
 }
 
 /*********************
+VERTICAL ALIGN
+@include vertical-align();
+NOTES:
+  - Simple border radius mixin to cover all browser implementations
+*********************/
+@mixin vertical-align() {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/*********************
 OPACITY
 @include opacity(1);
 NOTES:
