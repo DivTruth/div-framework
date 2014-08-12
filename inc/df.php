@@ -18,7 +18,7 @@ if ( ! class_exists('DF') ) {
         /**
          * @var string
          */
-        public static $version = '1.0';
+        public static $version = '0.2.6';
 
         /**
          * @var DF The single instance of the class

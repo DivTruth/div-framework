@@ -30,7 +30,7 @@ add_action( 'admin_enqueue_scripts', 'df_admin_styles', 15 );
 # Custom Backend Footer
 add_filter('admin_footer_text', 'df_custom_admin_footer');
 function df_custom_admin_footer() {
-    _e('<span id="footer-thankyou">Powered by <a href="http://www.divblend.com" target="_blank">The Div Framework</a></span>.', 'div-framework');
+    _e('<span id="footer-thankyou">Powered by <a href="http://www.divblend.com" target="_blank">The Div Framework</a> (version '.DF::$version.')</span>.', 'div-framework');
 }
 
 /*=====// THEME SUPPORTS //===================*/
