@@ -1,0 +1,115 @@
+/******************************************************************
+Site Name: Div Framework
+Stylesheet: Grid Mixins
+
+EXAMPLE:
+	@include twelvecol();
+
+	//if not in a media query directive then set true for @extends
+	@include twelvecol(true);
+
+******************************************************************/
+
+@mixin column($extend: false) {
+  @if $extend { @extend %column; }
+  @else { position: relative; float: left; margin-left: 2.762430939%; }
+}
+%column { @include column; }
+
+/* .first */
+@mixin first($extend: false) {
+  @if $extend { @extend %first; }
+  @else { margin-left: 0 !important; }
+}
+%first { @include first; }
+
+/* .last */
+@mixin last($extend: false) {
+  @if $extend { @extend %last; }
+  @else { float: right !important; margin-right: 0 !important; }
+}
+%last { @include last; }
+
+/* 4.85%;  } /* grid_1  */
+@mixin onecol($extend: false) {
+  @if $extend { @extend %onecol; }
+  @else { width: 5.801104972%;  @include column; }
+}
+%onecol { @include onecol; }
+
+/* 13.45%; } /* grid_2  */
+@mixin twocol($extend: false) {
+  @if $extend { @extend %twocol; }
+  @else { width: 14.364640883%;  @include column; }
+}
+%twocol { @include twocol; }
+
+/* 22.05%; } /* grid_3  */
+@mixin threecol($extend: false) {
+  @if $extend { @extend %threecol; }
+  @else { width: 22.928176794%;  @include column; }
+}
+%threecol { @include threecol; }
+      
+/* 30.75%; } /* grid_4  */
+@mixin fourcol($extend: false) {
+  @if $extend { @extend %fourcol; }
+  @else { width: 31.491712705%;  @include column; }
+}
+%fourcol { @include fourcol; }
+      
+/* 39.45%; } /* grid_5  */
+@mixin fivecol($extend: false) {
+  @if $extend { @extend %fivecol; }
+  @else { width: 40.055248616%;  @include column; }
+}
+%fivecol { @include fivecol; }
+ 
+/* 48%; } /* grid_6  */    
+@mixin sixcol($extend: false) {
+  @if $extend { @extend %sixcol; }
+  @else { width: 48.618784527%;  @include column; }
+}
+%sixcol { @include sixcol; }
+      
+/* 56.75%; } /* grid_7  */
+@mixin sevencol($extend: false) {
+  @if $extend { @extend %sevencol; }
+  @else { width: 57.182320438000005%;  @include column; }
+}
+%sevencol { @include sevencol; }
+
+/* 65.4%;  } /* grid_8  */
+@mixin eightcol($extend: false) {
+  @if $extend { @extend %eightcol; }
+  @else { width: 65.74585634900001%;  @include column; }
+}
+%eightcol { @include eightcol; }
+ 
+/* 74.05%; } /* grid_9  */
+@mixin ninecol($extend: false) {
+  @if $extend { @extend %ninecol; }
+  @else { width: 74.30939226%;  @include column; }
+}
+%ninecol { @include ninecol; }
+
+/* 82.7%;  } /* grid_10 */     
+@mixin tencol($extend: false) {
+  @if $extend { @extend %tencol; }
+  @else { width: 82.87292817100001%;  @include column; }
+}
+%tencol { @include tencol; }
+ 
+/* 91.35%; } /* grid_11 */
+@mixin elevencol($extend: false) {
+  @if $extend { @extend %elevencol; }
+  @else { width: 91.436464082%;  @include column; }
+}
+%elevencol { @include elevencol; }
+      
+/* 100%;   } /* grid_12 */
+@mixin twelvecol($extend: false) {
+  @if $extend { @extend %twelvecol; }
+  @else { width: 99.999999993%;  @include column;  @include first; }
+}
+%twelvecol { @include twelvecol; }

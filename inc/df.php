@@ -33,7 +33,7 @@ if ( ! class_exists('DF') ) {
          *
          * @since 1.0
          * @static
-         * @see DIV()
+         * @see DS()
          * @return DivStarter - Main instance
          */
         public static function instance() {

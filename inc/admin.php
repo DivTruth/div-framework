@@ -30,7 +30,7 @@ add_action( 'admin_enqueue_scripts', 'df_admin_styles', 15 );
 # Custom Backend Footer
 add_filter('admin_footer_text', 'df_custom_admin_footer');
 function df_custom_admin_footer() {
-    _e('<span id="footer-thankyou">Powered by <a href="http://www.divblend.com" target="_blank">The Div Framework</a> (version '.DF::$version.')</span>.', 'div-framework');
+    _e('<span id="footer-thankyou">Powered by <a href="http://www.divblend.com" target="_blank">The Div Framework</a> (version '.DF::$version.')</span>', 'div-framework');
 }
 
 /*=====// THEME SUPPORTS //===================*/
@@ -132,7 +132,7 @@ function df_footer_nav($newOptions = array()) {
 } /* end df_framework footer nav */
 
 function df_framework_main_nav_cb(){
-    echo '<nav class="nav">';
+    echo '<nav class="nav full">';
         echo '<ul class="inner-nav wrap clearfix">';
             echo apply_filters('df_primary_nav_items', wp_list_pages('echo=0&sort_column=menu_order&title_li=') );
         echo '</ul>';
