@@ -206,7 +206,7 @@ if ( ! function_exists( 'df_begin_content_container' ) ) {
      * @return void
      */
     function df_post_info(){
-      return get_template_part( 'parts/post/loop', 'post-info' );
+      return get_template_part( 'partials/post/loop', 'post-info' );
     }
 
   } 

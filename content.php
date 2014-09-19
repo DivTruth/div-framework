@@ -12,9 +12,9 @@
 	 * df_post_content hook
 	 *
 	 * @hooked df_title_output - 10
-	 * @hooked df_post_info - 15 (if single)
+	 * @hooked df_post_info - 15 #TEMPLATE: partials/post/loop-post-info.php
 	 * @hooked the_content - 20
-	 * @hooked df_post_meta - 25
+	 * @hooked df_post_meta - 25 #TEMPLATE: partials/post/loop-post-meta.php
 	 * @hooked df_clear - 30
 	 */
 	do_action('df_post_content'); ?>

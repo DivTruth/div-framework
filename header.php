@@ -44,11 +44,11 @@
 				
 				<?php df_top_nav(); ?>
 
-				<?php get_template_part('parts/header/part','mobile-menu'); ?>
+				<?php get_template_part('partials/header/part','mobile-menu'); ?>
 
 				<div id="inner-header" class="wrap clearfix">
 					
-					<?php get_template_part('parts/header/part','titlespace'); ?>
+					<?php get_template_part('partials/header/part','titlespace'); ?>
 					
 				</div> <!-- end #inner-header -->
 					
