@@ -285,9 +285,12 @@ if ( ! function_exists( 'df_404_message' ) ) {
    * @return void
    */
   function df_404_message(){
-    $html = '<header class="article-header">
-      <h1>Post Not Found</h1>
+    $header = '<header class="article-header">
+      <h1>Page Not Found</h1>
     </header>';
+    echo apply_filters( 'df_404_header', $header );
+    
+    $html = '<p>Sorry but the page you\'re looking for cannot be found, perhaps go back to the <a href="'.get_bloginfo('url').'">home page</a> and try again.</p>';
     echo apply_filters( 'df_404_message', $html );
   }
 
