@@ -1,44 +1,68 @@
 <?php
 /**
- * The 404 Page template file.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- */
-
-//LOADING header.php + actions
-header("Status: 404 Not Found");
-get_header(); 
+ * @package Div Framework
+ * @since   1.0
+*/
 ?>
-<div id="middleWrapper" class="<?php echo apply_filters( 'middle_wrapper_section_class', ''); ?>" data-role="content">
-    <div id="middleContainer" class="<?php echo apply_filters('middle_container_row_class', wlfw_grid_row_class(16)); ?>">
-        <div id="contentColWide" class="<?php echo apply_filters('wlfw_content_col_class', wlfw_grid_col_class(11)); ?> content-primary">
-            <div id="post-0" class="post error404 not-found">
-                <h1 class="entry-title"><?php _e( 'We are sorry but the page you requested does not exist.', 'wlfw' ); ?></h1>
-                <div class="entry-content">
-                <?php    
-                     if(get_option(SM_SITEOP_PREFIX.'autosearch')) { $auto_search_enabled =  get_option(SM_SITEOP_PREFIX.'autosearch'); }
-                    else { $auto_search_enabled =  false; }
-                    if($auto_search_enabled)
-                        get_template_part( 'loop', 'search' ); 
-                    else {
-                        $default_content_id = get_option(SM_SITEOP_PREFIX.'autosearch_default_content_id');
-                        if($default_content_id !='') {
-                            global $post;
-                            $args = array( 'numberposts' => 5, 'offset'=> 1, 'category' => 1 );
-                            $myposts = get_posts( array('include'=> $default_content_id, 'post_type'=> 'page') );
-                            
-                            foreach( $myposts as $post ) :	setup_postdata($post);
-                                the_content();
-                            endforeach;
-                        }
-                    }
-                 ?>   
-                </div><!-- .entry-content -->
-            </div><!-- #post-0 -->
-        </div><!-- ./contentColWide -->
-        <div id="middleSidebar" class="<?php wlfw_grid_col_class(5); ?>">
-			<?php get_sidebar('middle'); ?>
-        </div>
-        <div class="clear"></div>
-    </div><!-- #middleContainer -->
-</div><!-- #middleWrapper -->
+
+<?php get_header(); ?>
+
+    <?php 
+    /**
+     * df_begin_content hook
+     *
+     * @hooked df_begin_content_container - 10
+     * @hooked df_begin_main_container - 15
+     */
+    do_action('df_begin_content') ?>
+         
+        <?php #The Loop ?>
+        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>   
+
+            <?php do_action('df_before_loop_content') ?>
+
+                <?php remove_action( 'df_post_content', 'df_post_info', 15); ?>
+
+                <?php 
+                /*
+                 * Include the post format-specific template for the content. If you want to
+                 * use this in a child theme, then include a file called called content-___.php
+                 * (where ___ is the post format) and that will be used instead.
+                 * NOTE: content.php is the default format
+                 */
+                get_template_part( 'content', get_post_format() ); ?>                 
+            
+            <?php do_action('df_after_loop_content') ?>
+
+        <?php endwhile; ?>
+
+            <?php //TODO: Pagination functionality ?>
+    
+        <?php else : ?>
+            
+            <?php 
+            /**
+             * df_post_not_found hook
+             *
+             * @hooked df_end_main_container - 5
+             * @hooked df_load_sidebar - 10
+             * @hooked df_end_content_container - 15
+             * @filter df_404_message
+             */
+            _e('<article id="post-not-found" class="hentry clearfix">');
+                do_action('df_post_not_found'); 
+            _e('</article>'); ?>
+    
+        <?php endif; ?>
+                  
+    <?php 
+    /**
+     * df_end_content hook
+     *
+     * @hooked df_end_main_container - 10
+     * @hooked get_sidebar - 15
+     * @hooked df_end_content_container - 20
+     */
+    do_action('df_end_content') ?>
+
 <?php get_footer(); ?>
