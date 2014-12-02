@@ -177,6 +177,36 @@ if ( ! class_exists('DF') ) {
         function df_customizer( $wp_customize ) {
 
             /**
+             * Setup logo (add to Title and Tagline section)
+             */
+            // $wp_customize->add_section( 'df_logo_section', array(
+            //     'title'         => __( 'Logo', 'div-framework' ),
+            //     'priority'      => 115,
+            //     'description'   => 'Upload your logo to be used in the header',
+            // ) );
+            $wp_customize->add_setting( 'df_logo' );
+            $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'df_logo', array(
+                'label'     => __( 'Logo', 'div-framework' ),
+                'section'   => 'title_tagline',
+                'settings'  => 'df_logo',
+            ) ) );
+
+            $wp_customize->add_setting( 'df_logo_float', array('default'   => 'none') );
+            $wp_customize->add_control(
+                'df_logo_float',
+                array(
+                    'type' => 'select',
+                    'label' => 'Alignment',
+                    'section' => 'title_tagline',
+                    'choices' => array(
+                        'none' => 'None',
+                        'left' => 'Left',
+                        'right' => 'Right',
+                    ),
+                )
+            );
+
+            /**
              * Setup nav_logo
              */
             $wp_customize->add_section( 'df_nav_logo_section', array(
@@ -184,14 +214,15 @@ if ( ! class_exists('DF') ) {
                 'priority'      => 120,
                 'description'   => 'Upload a logo if you wish to include within the navigation bar',
             ) );
+
             $wp_customize->add_setting( 'df_nav_logo' );
-            $wp_customize->add_setting( 'df_nav_logo_float', array('default'   => 'left') );
             $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'df_nav_logo', array(
                 'label'     => __( 'Logo', 'div-framework' ),
                 'section'   => 'df_nav_logo_section',
                 'settings'  => 'df_nav_logo',
             ) ) );
 
+            $wp_customize->add_setting( 'df_nav_logo_float', array('default'   => 'left') );
             $wp_customize->add_control(
                 'df_nav_logo_float',
                 array(
@@ -204,6 +235,20 @@ if ( ! class_exists('DF') ) {
                     ),
                 )
             );
+        }
+
+        public static function logo(){
+            $align = ( get_theme_mod( 'df_logo_float' ) ) ? "float:".esc_attr( get_theme_mod( 'df_logo_float' ) ).";" : "";
+            if ( get_theme_mod( 'df_logo' ) ) :
+                $logo = '<div class="logo" style="'.$align.'">
+                    <a href="'.esc_url( home_url() ).'" title="'.esc_attr( get_bloginfo( 'name', 'display' ) ).'" rel="home">
+                        <img src="'.esc_url( get_theme_mod( 'df_logo' ) ).'" alt="'.esc_attr( get_bloginfo( 'name', 'display' ) ).'">
+                    </a>
+                </div>';
+                echo apply_filters( 'logo', $logo );
+            else :
+                return null;
+            endif;
         }
 
         public static function nav_logo(){

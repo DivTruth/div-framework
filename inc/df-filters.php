@@ -127,7 +127,7 @@ if ( ! function_exists( 'df_html5_shiv' ) ) {
 
 /*===================// CONTENT //===================*/
 
-if ( ! function_exists( 'main_nav_logo' ) ) {
+if ( ! function_exists( 'df_logo' ) ) {
 
   /**
    * Output the logo
@@ -135,12 +135,27 @@ if ( ! function_exists( 'main_nav_logo' ) ) {
    * @subpackage  Framework/Head
    * @return void
    */
+  function df_logo($s){
+      return apply_filters( 'df_logo', DF::logo() );
+  }
+  add_filter( 'df_insert_logo', 'df_logo' );
+
+}
+
+if ( ! function_exists( 'df_nav_logo' ) ) {
+
+  /**
+   * Output the navigation logo
+   * @access public
+   * @subpackage  Framework/Head
+   * @return void
+   */
   function df_nav_logo($s){
       return apply_filters( 'df_nav_logo', DF::nav_logo().$s );
   }
+  add_filter( 'df_primary_nav_items', 'df_nav_logo' );
 
 }
-add_filter( 'df_primary_nav_items', 'df_nav_logo' );
 
 if ( ! function_exists( 'df_begin_content_container' ) ) {
 
@@ -285,12 +300,9 @@ if ( ! function_exists( 'df_404_message' ) ) {
    * @return void
    */
   function df_404_message(){
-    $header = '<header class="article-header">
-      <h1>Page Not Found</h1>
+    $html = '<header class="article-header">
+      <h1>Post Not Found</h1>
     </header>';
-    echo apply_filters( 'df_404_header', $header );
-    
-    $html = '<p>Sorry but the page you\'re looking for cannot be found, perhaps go back to the <a href="'.get_bloginfo('url').'">home page</a> and try again.</p>';
     echo apply_filters( 'df_404_message', $html );
   }
 
