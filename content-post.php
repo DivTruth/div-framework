@@ -14,7 +14,7 @@
         <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
         <p class="byline vcard"><?php
             printf(__('<time class="updated" datetime="%1$s" pubdate>%2$s @ %3$s </time>', 'divtruth'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_time('g:iA'));
-            printf(__('<span class="tags">%1$s</span', 'divtruth'), get_the_category_list(', '));
+            printf(__('<span class="tags">%1$s</span>', 'divtruth'), get_the_category_list(', '));
         ?></p>
 
     </header> <!-- end article header -->
