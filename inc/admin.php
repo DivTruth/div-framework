@@ -95,7 +95,9 @@ function df_top_nav($newOptions = array()) {
         'depth'             => 3,
         'fallback_cb'       => '__return_false',
     );
-    wp_nav_menu(array_merge(apply_filters( 'df_top_nav', $newOptions ) ), $options);
+    if ( has_nav_menu( 'top-nav' ) ) {
+        wp_nav_menu(array_merge(apply_filters( 'df_top_nav', $newOptions ) ), $options);
+    }
 } /* end df_framework main nav */
 
 function df_mobile_nav($newOptions = array()) {
