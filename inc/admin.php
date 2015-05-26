@@ -134,7 +134,9 @@ function df_footer_nav($newOptions = array()) {
         'depth'             => 1,
         'fallback_cb'       => '__return_false',
     );
-    wp_nav_menu(array_merge(apply_filters( 'df_footer_nav', $newOptions ) ), $options);
+    if ( has_nav_menu( 'footer-nav' ) ) {
+        wp_nav_menu(array_merge(apply_filters( 'df_footer_nav', $newOptions ) ), $options);
+    }
 } /* end df_framework footer nav */
 
 function df_framework_main_nav_cb(){
