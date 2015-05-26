@@ -76,7 +76,7 @@ function df_primary_nav($newOptions = array()) {
         'depth'             => 3,
         'fallback_cb'       => 'df_framework_main_nav_cb',
     );
-    wp_nav_menu(array_merge(apply_filters( 'df_primary_nav', $newOptions ) ), $options);
+    wp_nav_menu(array_merge($options, apply_filters( 'df_primary_nav', $newOptions ) ));
 } /* end df_framework primary nav */
 
 function df_top_nav($newOptions = array()) {
