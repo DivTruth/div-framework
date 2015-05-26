@@ -96,7 +96,7 @@ function df_top_nav($newOptions = array()) {
         'fallback_cb'       => '__return_false',
     );
     if ( has_nav_menu( 'top-nav' ) ) {
-        wp_nav_menu(array_merge(apply_filters( 'df_top_nav', $newOptions ) ), $options);
+        wp_nav_menu(array_merge($options, apply_filters( 'df_top_nav', $newOptions ) ));
     }
 } /* end df_framework main nav */
 
@@ -116,7 +116,9 @@ function df_mobile_nav($newOptions = array()) {
         'depth'             => 2,
         'fallback_cb'       => 'df_framework_mobile_nav_cb'
     );
-    wp_nav_menu(array_merge(apply_filters( 'df_mobile_nav', $newOptions ) ), $options);
+    if ( has_nav_menu( 'mobile-nav' ) ) {
+        wp_nav_menu(array_merge($options, apply_filters( 'df_mobile_nav', $newOptions ) ));
+    }
 } /* end df_framework mobile nav */
 
 function df_footer_nav($newOptions = array()) {
@@ -135,7 +137,7 @@ function df_footer_nav($newOptions = array()) {
         'fallback_cb'       => '__return_false',
     );
     if ( has_nav_menu( 'footer-nav' ) ) {
-        wp_nav_menu(array_merge(apply_filters( 'df_footer_nav', $newOptions ) ), $options);
+        wp_nav_menu(array_merge($options, apply_filters( 'df_footer_nav', $newOptions ) ));
     }
 } /* end df_framework footer nav */
 
