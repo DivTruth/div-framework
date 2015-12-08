@@ -21,8 +21,15 @@ if ( ! function_exists( 'df_page_title' ) ) {
    * @return void
    */
   function df_page_title($title){
-    $title = '<title>' . wp_title(' - ', false) . '</title>';
-    echo apply_filters( 'df_page_title', $title );
+    /**
+     * Only output the DF-rendered title if _wp_render_title_tag doesn't exist
+     *
+     * @since 0.2.7
+     */
+    if ( ! function_exists( '_wp_render_title_tag' ) ) {
+      $title = '<title>' . wp_title( ' - ', false ) . '</title>';
+      echo apply_filters( 'df_page_title', $title );
+    }
   }
 
 }
